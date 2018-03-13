@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         validator = new Validator(this, new ArrayList<ValidationConfig>() {{
-            add(new ValidationConfig(new NotEmpty(), etMobile));
-            add(new ValidationConfig(new Mobile(), etMobile));
+            add(new ValidationConfig(etMobile, new NotEmpty(), new Mobile()));
         }}, new OnValidationListener() {
             @Override
             public void onValidated() {
