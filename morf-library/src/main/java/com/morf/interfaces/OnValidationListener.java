@@ -1,4 +1,4 @@
-package com.morf;
+package com.morf.interfaces;
 
 public interface OnValidationListener {
 

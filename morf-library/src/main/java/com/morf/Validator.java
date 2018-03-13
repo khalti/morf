@@ -8,6 +8,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.mobsandgeeks.saripaar.ValidationError;
+import com.morf.interfaces.OnValidationListener;
+import com.morf.interfaces.ValidatorProtocols;
 
 import java.util.List;
 

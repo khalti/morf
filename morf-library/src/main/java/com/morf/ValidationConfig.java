@@ -13,11 +13,11 @@ public class ValidationConfig {
         this.editText = editText;
     }
 
-    public QuickRule[] getQuickRule() {
+    QuickRule[] getQuickRule() {
         return quickRule;
     }
 
-    public AppCompatEditText getEditText() {
+    AppCompatEditText getEditText() {
         return editText;
     }
 }

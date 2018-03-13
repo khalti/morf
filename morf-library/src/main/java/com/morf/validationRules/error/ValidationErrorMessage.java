@@ -8,4 +8,6 @@ public class ValidationErrorMessage {
     public static final String MOBILE_EMAIL_ERROR = "Enter valid mobile number or email address";
     public static final String EMPTY_ERROR = "This field is required";
     public static final String FULL_NAME_ERROR = "Enter full name";
+    public static final String PASSWORD_ERROR = "Invalid password";
+    public static final String PASSWORD_CONFIRM_ERROR = "Password does not match";
 }

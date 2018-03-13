@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
-import com.morf.OnValidationListener;
 import com.morf.ValidationConfig;
 import com.morf.Validator;
+import com.morf.interfaces.OnValidationListener;
 import com.morf.utils.LogUtil;
 import com.morf.validationRules.Mobile;
 import com.morf.validationRules.NotEmpty;
+import com.morf.validationRules.Password;
+import com.morf.validationRules.PasswordConfirm;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     MaterialEditText etMobile;
     @BindView(R.id.btnSubmit)
     Button btnSubmit;
+    @BindView(R.id.etPassword)
+    MaterialEditText etPassword;
+    @BindView(R.id.etConfirmPassword)
+    MaterialEditText etConfirmPassword;
 
     private Validator validator;
 
@@ -34,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         validator = new Validator(this, new ArrayList<ValidationConfig>() {{
             add(new ValidationConfig(etMobile, new NotEmpty(), new Mobile()));
+            add(new ValidationConfig(etPassword, new NotEmpty(), new Password(10)));
+            add(new ValidationConfig(etConfirmPassword, new NotEmpty(), new PasswordConfirm(etPassword)));
         }}, new OnValidationListener() {
             @Override
             public void onValidated() {
