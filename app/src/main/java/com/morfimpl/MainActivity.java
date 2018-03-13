@@ -12,6 +12,7 @@ import com.morf.validationRules.Mobile;
 import com.morf.validationRules.NotEmpty;
 import com.morf.validationRules.Password;
 import com.morf.validationRules.PasswordConfirm;
+import com.morf.validationRules.Range;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     MaterialEditText etPassword;
     @BindView(R.id.etConfirmPassword)
     MaterialEditText etConfirmPassword;
+    @BindView(R.id.etAmount)
+    MaterialEditText etAmount;
 
     private Validator validator;
 
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             add(new ValidationConfig(etMobile, new NotEmpty(), new Mobile()));
             add(new ValidationConfig(etPassword, new NotEmpty(), new Password(10)));
             add(new ValidationConfig(etConfirmPassword, new NotEmpty(), new PasswordConfirm(etPassword)));
+            add(new ValidationConfig(etAmount, new NotEmpty(), new Range(10L, 1000000L)));
         }}, new OnValidationListener() {
             @Override
             public void onValidated() {

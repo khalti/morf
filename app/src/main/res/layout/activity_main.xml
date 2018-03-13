@@ -23,6 +23,22 @@
         app:met_primaryColor="@color/colorPrimaryDark" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/etAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/globalPadding"
+        android:ems="10"
+        android:hint="Amount"
+        android:inputType="textAutoComplete"
+        android:maxLength="50"
+        android:textColorHint="@color/disabled"
+        android:textSize="20sp"
+        app:met_baseColor="@color/black"
+        app:met_errorColor="@color/danger"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@color/colorPrimaryDark" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

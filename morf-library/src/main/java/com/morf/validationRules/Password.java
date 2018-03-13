@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Password extends QuickRule<AppCompatEditText> {
+    private String error;
     private final Map<Scheme, String> SCHEME_PATTERNS =
             new HashMap<Scheme, String>() {{
                 put(Password.Scheme.ANY, ".+");
@@ -45,6 +46,12 @@ public class Password extends QuickRule<AppCompatEditText> {
         if (password.length() > 0) {
             boolean hasMinChars = password.length() >= minLength;
             boolean matchesScheme = password.matches(SCHEME_PATTERNS.get(scheme));
+
+            if (hasMinChars) {
+                error = ValidationErrorMessage.PASSWORD_ERROR;
+            } else {
+                error = ValidationErrorMessage.PASSWORD_LENGTH_ERROR.replace("{}", minLength + "");
+            }
             return hasMinChars && matchesScheme;
         }
         return true;
@@ -52,7 +59,7 @@ public class Password extends QuickRule<AppCompatEditText> {
 
     @Override
     public String getMessage(Context context) {
-        return ValidationErrorMessage.PASSWORD_ERROR;
+        return error;
     }
 
     public enum Scheme {

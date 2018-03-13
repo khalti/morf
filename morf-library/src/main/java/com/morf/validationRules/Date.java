@@ -4,22 +4,22 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;
 
 import com.mobsandgeeks.saripaar.QuickRule;
-import com.morf.utils.EmptyUtil;
 import com.morf.validationRules.error.ValidationErrorMessage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Mobile extends QuickRule<AppCompatEditText> {
+public class Date extends QuickRule<AppCompatEditText> {
 
-    public Mobile() {
+    public Date() {
     }
 
     @Override
     public boolean isValid(AppCompatEditText view) {
-        if (EmptyUtil.isNotEmpty(view.getText() + "")) {
-            Pattern pattern = Pattern.compile("[9][678][0-9]{8}");
-            Matcher matcher = pattern.matcher(view.getText() + "");
+        String s = view.getText() + "";
+        if (s.length() > 0) {
+            Pattern pattern = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})");
+            Matcher matcher = pattern.matcher(s);
 
             return matcher.find();
         }
@@ -29,6 +29,6 @@ public class Mobile extends QuickRule<AppCompatEditText> {
 
     @Override
     public String getMessage(Context context) {
-        return ValidationErrorMessage.MOBILE_ERROR;
+        return ValidationErrorMessage.DATE_ERROR;
     }
 }

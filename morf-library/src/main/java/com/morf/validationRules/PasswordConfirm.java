@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;
 
 import com.mobsandgeeks.saripaar.QuickRule;
+import com.morf.utils.EmptyUtil;
 import com.morf.validationRules.error.ValidationErrorMessage;
 
 public class PasswordConfirm extends QuickRule<AppCompatEditText> {
@@ -16,7 +17,7 @@ public class PasswordConfirm extends QuickRule<AppCompatEditText> {
 
     @Override
     public boolean isValid(AppCompatEditText view) {
-        return (view.getText() + "").equals(passwordView.getText() + "");
+        return EmptyUtil.isEmpty(view.getText() + "") || (view.getText() + "").equals(passwordView.getText() + "");
     }
 
     @Override
