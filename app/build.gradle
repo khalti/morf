@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion targetSdk
@@ -34,5 +33,5 @@ dependencies {
     /*ButterKnife*/
     implementation butterKnife.butterKnife
     annotationProcessor butterKnife.butterKnifeCompiler
-    implementation project(':morf-library')
+    implementation project(':morf')
 }
