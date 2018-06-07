@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#Validator
+-keep class com.mobsandgeeks.saripaar.** {*;}
+
+-keep class com.morf.** { *; }
+-dontwarn java.lang.invoke.*
+-dontwarn sun.misc.Unsafe

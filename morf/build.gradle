@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode morfVersionCode
-        versionName morfVersionName
+        versionCode libraryVersionCode
+        versionName libraryVersionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'proguard-rules.pro'
@@ -29,3 +29,6 @@ dependencies {
     implementation supportLibrary.appCompat
     api validator.saripaar
 }
+
+apply from: 'kInstall.gradle'
+apply from: 'kBintray.gradle'
