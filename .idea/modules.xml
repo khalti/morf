@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/morf/morf.iml" filepath="$PROJECT_DIR$/morf/morf.iml" />
       <module fileurl="file://$PROJECT_DIR$/morf-impl.iml" filepath="$PROJECT_DIR$/morf-impl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/morf-library/morf-library.iml" filepath="$PROJECT_DIR$/morf-library/morf-library.iml" />
     </modules>
   </component>
 </project>

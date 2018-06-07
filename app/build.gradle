@@ -33,5 +33,5 @@ dependencies {
     /*ButterKnife*/
     implementation butterKnife.butterKnife
     annotationProcessor butterKnife.butterKnifeCompiler
-    implementation project(':morf-library')
+    implementation project(':morf')
 }
