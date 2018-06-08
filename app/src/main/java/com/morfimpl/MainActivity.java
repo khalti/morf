@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         validator = new Validator(this, new ArrayList<ValidationConfig>() {{
             add(new ValidationConfig(etMobile, "mobile", new NotEmpty(), new Mobile()));
-            add(new ValidationConfig(etPassword, new NotEmpty(), new Password(10)));
+            add(new ValidationConfig(etPassword, "password", new NotEmpty(), new Password(10)));
             add(new ValidationConfig(etConfirmPassword, new NotEmpty(), new PasswordConfirm(etPassword)));
             add(new ValidationConfig(etAmount, new NotEmpty(), new Range(10L, 1000000L)));
         }}, new OnValidationListener() {
