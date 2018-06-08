@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         validator = new Validator(this, new ArrayList<ValidationConfig>() {{
-            add(new ValidationConfig(etMobile, new NotEmpty(), new Mobile()));
+            add(new ValidationConfig(etMobile, "mobile", new NotEmpty(), new Mobile()));
             add(new ValidationConfig(etPassword, new NotEmpty(), new Password(10)));
             add(new ValidationConfig(etConfirmPassword, new NotEmpty(), new PasswordConfirm(etPassword)));
             add(new ValidationConfig(etAmount, new NotEmpty(), new Range(10L, 1000000L)));
@@ -58,6 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSubmit.setOnClickListener(view -> validator.validate());
+        btnSubmit.setOnClickListener(view -> validator.setCustomError("mobile", "This is custom error"));
     }
 }
