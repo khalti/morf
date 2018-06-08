@@ -29,6 +29,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation supportLibrary.appCompat
     implementation editText.materialEditText
+    implementation rx.rxBinding
 
     /*ButterKnife*/
     implementation butterKnife.butterKnife

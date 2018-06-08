@@ -10,14 +10,20 @@ import android.widget.Toast;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.morf.interfaces.OnValidationListener;
 import com.morf.interfaces.ValidatorProtocols;
+import com.morf.utils.EmptyUtil;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Validator implements ValidatorProtocols {
 
     private com.mobsandgeeks.saripaar.Validator validator;
+    private HashMap<String, AppCompatEditText> editableMap;
+    private Context context;
 
     public Validator(final Context context, List<ValidationConfig> validations, final OnValidationListener onValidationListener) {
+        this.context = context;
+        editableMap = new HashMap<>();
         validator = new com.mobsandgeeks.saripaar.Validator(this);
         validator.setValidationListener(new com.mobsandgeeks.saripaar.Validator.ValidationListener() {
             @Override
@@ -36,10 +42,7 @@ public class Validator implements ValidatorProtocols {
                     String message = msg[msg.length - 1];
 
                     if (view instanceof AppCompatEditText) {
-                        Animation animation = AnimationUtils.loadAnimation(context, R.anim.shake);
-
-                        view.startAnimation(animation);
-                        ((AppCompatEditText) view).setError(message);
+                        setError((AppCompatEditText) view, message);
                     } else {
                         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                     }
@@ -49,11 +52,28 @@ public class Validator implements ValidatorProtocols {
 
         for (ValidationConfig config : validations) {
             validator.put(config.getEditText(), config.getQuickRule());
+            if (EmptyUtil.isNotNull(config.getViewTag())) {
+                editableMap.put(config.getViewTag(), config.getEditText());
+            }
         }
     }
 
     @Override
     public void validate() {
-        validator.validate();
+        validator.validate(true);
+    }
+
+    @Override
+    public void setCustomError(String viewTag, String error) {
+        if (editableMap.containsKey(viewTag)) {
+            setError(editableMap.get(viewTag), error);
+        }
+    }
+
+    private void setError(AppCompatEditText view, String error) {
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.shake);
+
+        view.startAnimation(animation);
+        view.setError(error);
     }
 }

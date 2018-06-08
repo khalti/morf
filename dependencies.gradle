@@ -22,6 +22,20 @@ ext {
             materialEditText: "com.rengwuxian.materialedittext:library:${materialEditTextVersion}"
     ]
 
+    rxVersion = '2.1.14'
+    rxAndroidVersion = '2.0.2'
+    rxBindingVersion = '2.1.1'
+    rx = [
+            rxJava               : "io.reactivex.rxjava2:rxjava:$rxVersion",
+            rxAndroid            : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+
+            rxBinding            : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
+            rxBindingSupport     : "com.jakewharton.rxbinding2:rxbinding-support-v4:$rxBindingVersion",
+            rxBindingAppCompat   : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rxBindingVersion",
+            rxBindingDesign      : "com.jakewharton.rxbinding2:rxbinding-design:$rxBindingVersion",
+            rxBindingRecyclerView: "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rxBindingVersion"
+    ]
+
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'
     hamcrestVersion = '1.3'
