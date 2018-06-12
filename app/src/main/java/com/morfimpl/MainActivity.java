@@ -16,6 +16,7 @@ import com.morf.validationRules.Range;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSubmit.setOnClickListener(view -> validator.setCustomError("mobile", "This is custom error"));
+        btnSubmit.setOnClickListener(view -> validator.setCustomError(new HashMap<String, String>() {{
+            put("mobile", "This is mobile error");
+            put("password", "This is password error");
+            put("passwords", "fjjfksjdfjsfjjaf");
+        }}));
     }
 }

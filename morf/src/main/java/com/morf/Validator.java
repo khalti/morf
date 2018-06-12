@@ -70,6 +70,13 @@ public class Validator implements ValidatorProtocols {
         }
     }
 
+    @Override
+    public void setCustomError(HashMap<String, String> errorMap) {
+        for (String key : errorMap.keySet()) {
+            setCustomError(key, errorMap.get(key));
+        }
+    }
+
     private void setError(AppCompatEditText view, String error) {
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.shake);
 
