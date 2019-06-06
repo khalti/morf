@@ -10,7 +10,7 @@ import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Map;
 
-public class EmptyUtil {
+public class MorfEmptyUtil {
     public static boolean isEmpty(Object obj) {
         if (obj == null) {
             return true;

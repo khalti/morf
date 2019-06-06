@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;
 
 import com.mobsandgeeks.saripaar.QuickRule;
-import com.morf.utils.EmptyUtil;
+import com.morf.utils.MorfEmptyUtil;
 import com.morf.validationRules.error.ValidationErrorMessage;
 
 import java.util.regex.Matcher;
@@ -17,7 +17,7 @@ public class Mobile extends QuickRule<AppCompatEditText> {
 
     @Override
     public boolean isValid(AppCompatEditText view) {
-        if (EmptyUtil.isNotEmpty(view.getText() + "")) {
+        if (MorfEmptyUtil.isNotEmpty(view.getText() + "")) {
             Pattern pattern = Pattern.compile("[9][678][0-9]{8}");
             Matcher matcher = pattern.matcher(view.getText() + "");
 

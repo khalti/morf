@@ -22,6 +22,55 @@
         app:met_floatingLabel="highlight"
         app:met_primaryColor="@color/colorPrimaryDark" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/globalPadding">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/cardPadding"
+            android:focusable="false"
+            android:textSize="0sp"
+            android:visibility="gone"
+            app:met_baseColor="@color/white"
+            app:met_errorColor="@color/danger"
+            app:met_primaryColor="@color/white" />
+
+        <Spinner
+            android:id="@+id/spValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/globalPadding">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etError1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/cardPadding"
+            android:focusable="false"
+            android:textSize="0sp"
+            android:visibility="gone"
+            app:met_baseColor="@color/white"
+            app:met_errorColor="@color/danger"
+            app:met_primaryColor="@color/white" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="..."/>
+    </FrameLayout>
+
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/etAmount"
         android:layout_width="match_parent"

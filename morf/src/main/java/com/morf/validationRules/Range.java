@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;
 
 import com.mobsandgeeks.saripaar.QuickRule;
-import com.morf.utils.EmptyUtil;
+import com.morf.utils.MorfEmptyUtil;
 import com.morf.validationRules.error.ValidationErrorMessage;
 
 public class Range extends QuickRule<AppCompatEditText> {
@@ -19,7 +19,7 @@ public class Range extends QuickRule<AppCompatEditText> {
 
     @Override
     public boolean isValid(AppCompatEditText view) {
-        if (EmptyUtil.isNotEmpty(view.getText() + "")) {
+        if (MorfEmptyUtil.isNotEmpty(view.getText() + "")) {
             try {
                 Long number = Long.parseLong(view.getText() + "");
                 if (number < min) {

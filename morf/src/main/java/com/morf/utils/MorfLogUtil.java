@@ -2,7 +2,7 @@ package com.morf.utils;
 
 import android.util.Log;
 
-public class LogUtil {
+public class MorfLogUtil {
     // Do logs need to be visible ?
     private static final boolean DEBUG = true;
 
