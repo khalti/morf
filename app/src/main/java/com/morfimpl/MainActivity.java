@@ -102,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 tvValue.setText(charSequence);
+                validator.removeValidation(etPassword);
+                validator.addValidation(new ValidationConfig(etPassword, new NotEmpty(), new Password(20)));
             }
 
             @Override

@@ -67,59 +67,8 @@ public class Validator implements ValidatorProtocols {
                 }
             }
         });
-
         for (final ValidationConfig config : validations) {
-            validator.put(config.getView(), config.getQuickRule());
-            if (MorfEmptyUtil.isNotNull(config.getViewTag())) {
-                if (MorfEmptyUtil.isNotNull(config.getErrorView())) {
-                    config.getErrorView().setTag(config.getViewTag());
-                }
-                config.getView().setTag(config.getViewTag());
-                editableMap.put(config.getViewTag(), MorfEmptyUtil.isNotNull(config.getErrorView()) ? config.getErrorView() : config.getView());
-            }
-            if (config.getView() instanceof Spinner) {
-                ((Spinner) config.getView()).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        if (adapterView.getSelectedItemPosition() != 0) {
-                            AppCompatEditText et = (AppCompatEditText) editableMap.get(config.getViewTag() + "");
-                            if (MorfEmptyUtil.isNotNull(et)) {
-                                et.setTag("error_view");
-                                setError(et, null);
-                                et.setTag(config.getViewTag());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
-            }
-            if (config.getView() instanceof AppCompatTextView) {
-                ((AppCompatTextView) config.getView()).addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        AppCompatEditText et = (AppCompatEditText) editableMap.get(config.getViewTag() + "");
-                        if (MorfEmptyUtil.isNotNull(et)) {
-                            et.setTag("error_view");
-                            setError(et, null);
-                            et.setTag(config.getViewTag());
-                        }
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-
-                    }
-                });
-            }
+            onPutValidation(config);
         }
     }
 
@@ -142,6 +91,26 @@ public class Validator implements ValidatorProtocols {
         }
     }
 
+    @Override
+    public void removeValidation(View view) {
+        if (MorfEmptyUtil.isNotNull(validator)) {
+            validator.removeRules(view);
+            editableMap.remove(view.getTag() + "");
+        }
+    }
+
+    @Override
+    public void addValidation(ValidationConfig validationConfig) {
+        if (MorfEmptyUtil.isNotNull(validator)) {
+            onPutValidation(validationConfig);
+        }
+    }
+
+    @Override
+    public boolean isValidating() {
+        return validator.isValidating();
+    }
+
     private void setError(AppCompatEditText view, String error) {
         view.setVisibility(View.VISIBLE);
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.shake);
@@ -150,6 +119,60 @@ public class Validator implements ValidatorProtocols {
         view.setError(error);
         if (MorfEmptyUtil.isNull(error) && view.getTag().equals("error_view")) {
             view.setVisibility(View.GONE);
+        }
+    }
+
+    private void onPutValidation(final ValidationConfig config) {
+        validator.put(config.getView(), config.getQuickRule());
+        if (MorfEmptyUtil.isNotNull(config.getViewTag())) {
+            if (MorfEmptyUtil.isNotNull(config.getErrorView())) {
+                config.getErrorView().setTag(config.getViewTag());
+            }
+            config.getView().setTag(config.getViewTag());
+            editableMap.put(config.getViewTag(), MorfEmptyUtil.isNotNull(config.getErrorView()) ? config.getErrorView() : config.getView());
+        }
+        if (config.getView() instanceof Spinner) {
+            ((Spinner) config.getView()).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (adapterView.getSelectedItemPosition() != 0) {
+                        AppCompatEditText et = (AppCompatEditText) editableMap.get(config.getViewTag() + "");
+                        if (MorfEmptyUtil.isNotNull(et)) {
+                            et.setTag("error_view");
+                            setError(et, null);
+                            et.setTag(config.getViewTag());
+                        }
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
+        if (config.getView() instanceof AppCompatTextView) {
+            ((AppCompatTextView) config.getView()).addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    AppCompatEditText et = (AppCompatEditText) editableMap.get(config.getViewTag() + "");
+                    if (MorfEmptyUtil.isNotNull(et)) {
+                        et.setTag("error_view");
+                        setError(et, null);
+                        et.setTag(config.getViewTag());
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
         }
     }
 }
