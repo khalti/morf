@@ -6,18 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.morf.Extra;
 import com.morf.ValidationConfig;
 import com.morf.Validator;
-import com.morf.interfaces.OnItemSelectedListener;
 import com.morf.interfaces.OnValidationListener;
-import com.morf.utils.MorfEmptyUtil;
 import com.morf.utils.MorfLogUtil;
 import com.morf.validationRules.Mobile;
 import com.morf.validationRules.NotEmpty;
@@ -27,7 +23,6 @@ import com.morf.validationRules.Range;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spValue.setAdapter(spinnerAdapter);
 
+        Extra extra = new Extra();
+        extra.setCustomListener(true);
         validator = new Validator(this, new ArrayList<ValidationConfig>() {{
-            add(new ValidationConfig(spValue, etError, "value", new HashMap<String, Object>() {{
-                put("custom_listener", false);
-            }}, new NotEmpty()));
+            add(new ValidationConfig(spValue, etError, "value", extra, new NotEmpty()));
             add(new ValidationConfig(tvValue, etError1, "value1", new NotEmpty()));
             add(new ValidationConfig(etMobile, "mobile", new NotEmpty(), new Mobile()));
             add(new ValidationConfig(etPassword, "password", new NotEmpty(), new Password(10)));

@@ -19,7 +19,6 @@ import com.morf.interfaces.OnItemSelectedListener;
 import com.morf.interfaces.OnValidationListener;
 import com.morf.interfaces.ValidatorProtocols;
 import com.morf.utils.MorfEmptyUtil;
-import com.morf.utils.MorfLogUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -140,7 +139,7 @@ public class Validator implements ValidatorProtocols {
     }
 
     private void onPutValidation(final ValidationConfig config) {
-        Map<String, Object> extraData = config.getExtraData();
+        Extra extra = config.getExtra();
         validator.put(config.getView(), config.getQuickRule());
         if (MorfEmptyUtil.isNotNull(config.getViewTag())) {
             if (MorfEmptyUtil.isNotNull(config.getErrorView())) {
@@ -151,8 +150,8 @@ public class Validator implements ValidatorProtocols {
 
             if (config.getView() instanceof AppCompatSpinner) {
                 boolean customListener = false;
-                if (MorfEmptyUtil.isNotNull(extraData) && extraData.containsKey("custom_listener")) {
-                    customListener = (boolean) extraData.get("custom_listener");
+                if (MorfEmptyUtil.isNotNull(extra)) {
+                    customListener = extra.getCustomListener();
                 }
                 if (customListener) {
                     spinnerMap.put(config.getViewTag(), position -> {
