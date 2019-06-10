@@ -1,7 +1,7 @@
 package com.morf.validationRules;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.mobsandgeeks.saripaar.QuickRule;
 import com.morf.validationRules.error.ValidationErrorMessage;

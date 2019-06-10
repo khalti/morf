@@ -1,12 +1,13 @@
 ext {
 
-    supportVersion = '27.1.1'
+    supportVersion = '1.1.0-alpha04'
+    materialVersion = '1.1.0-alpha05'
     supportLibrary = [
-            appCompat: "com.android.support:appcompat-v7:${supportVersion}",
-            design   : "com.android.support:design:${supportVersion}"
+            appCompat: "androidx.appcompat:appcompat:${supportVersion}",
+            material : "com.google.android.material:material:$materialVersion"
     ]
 
-    butterKnifeVersion = '8.8.0'
+    butterKnifeVersion = '10.1.0'
     butterKnife = [
             butterKnife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
             butterKnifeCompiler: "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"

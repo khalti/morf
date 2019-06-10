@@ -1,8 +1,7 @@
 package com.morf.interfaces;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.morf.ValidationConfig;
 
