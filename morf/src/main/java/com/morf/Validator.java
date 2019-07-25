@@ -23,7 +23,6 @@ import com.morf.utils.MorfEmptyUtil;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 public class Validator implements ValidatorProtocols {
 
     private com.mobsandgeeks.saripaar.Validator validator;
@@ -39,6 +38,11 @@ public class Validator implements ValidatorProtocols {
     @Override
     public void validate() {
         validator.validate(true);
+    }
+
+    @Override
+    public void validate(boolean async) {
+        validator.validate(async);
     }
 
     @Override

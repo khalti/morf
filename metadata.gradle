@@ -2,8 +2,8 @@ ext {
     appVersionCode = 10000
     appVersionName = "1.0.0"
 
-    libraryVersionCode = 10500
-    libraryVersionName = "1.5.0"
+    libraryVersionCode = 10501
+    libraryVersionName = "1.5.1"
 
     compileSdk = 28
     buildToolVersion = '28.0.3'

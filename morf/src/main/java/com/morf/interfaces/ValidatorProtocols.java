@@ -1,6 +1,7 @@
 package com.morf.interfaces;
 
 import androidx.annotation.Nullable;
+
 import android.view.View;
 
 import com.morf.ValidationConfig;
@@ -10,6 +11,8 @@ import java.util.Map;
 public interface ValidatorProtocols {
 
     void validate();
+
+    void validate(boolean async);
 
     void setCustomError(String viewTag, String error);
 
